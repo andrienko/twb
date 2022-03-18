@@ -25,4 +25,6 @@ export type State<SV> = {
 };
 
 export const useState: <SV>(defaultValue: SV | (() => SV)) => State<SV>;
+export const useToggle: (setter: React.Dispatch<React.SetStateAction<boolean>>) => void;
+export const useTextChangeHandler: (setter: React.Dispatch<React.SetStateAction<string>>) => void;
 export const useUpdatedValues: (props: Record<string, unknown>, label?: string) => void;

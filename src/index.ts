@@ -4,6 +4,8 @@ export { domReady } from './domReady';
 export { randomId, nextId, fakeUuid } from './randomId';
 
 export { useUpdatedValues } from './useUpdatedValues';
+export { useTextChangeHandler } from './useTextChangeHandler';
+export { useToggle } from './useToggle';
 export { useState } from './useState';
 export { mountReact } from './mountReact';
 
