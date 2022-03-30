@@ -183,6 +183,38 @@ const handleTextChange = useTextChangeHandler(setText);
 Similar to handleTextChange, but to work with boolean states. For react state
 setter it will return a function that will set value to the opposite.
 
+### createContext
+
+A function that takes a hook function that should return object context value as an argument - and returns a hook and
+context provider. The returned hook will throw if used outside provider.
+
+```typeScript
+import React from 'react';
+import { createContext } from 'twb';
+
+const useHookValue = () => {
+  const [text, setText] = React.useState<string>('');
+  return React.useMemo(() => ({text, setText}), [text]);
+}
+
+export const [useTextContext, TextContextProvider] = createContext(useHookValue);
+```
+
+It will derive the hook value from return of that `useHookValue` (but you can provide it manually). If you name the fn
+as a hook (`useWhatever`) react eslint rules will help you.
+
+```typeScript
+import React from 'react';
+import { useContext } from './WhateverContext';
+import { useTextChangeHandler } from 'twb';
+
+export const Child = () => {
+  const { text, setText } = useContext();
+  const handleValueChange = useTextChangeHandler(setText);
+  return <input value={text} onChange={handleValueChange} />;
+};
+```
+
 ## Building
 
 `npm run build`
