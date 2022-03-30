@@ -10,6 +10,11 @@ export type UnknownRecord = Record<string, unknown>;
 type DomReadyArg = (e?: Event) => void;
 type DomReadyReturn = () => void;
 
+type H<SV> = () => SV;
+type CCR<SV> = [H<SV>, React.FC, React.Context<SV | undefined>];
+
+export const createContext: <SV>(hook: H<SV>) => CCR<SV>;
+
 /**
  * Fires a function when DOM has ben loaded.
  * @param  {DomReadyArg} listener
