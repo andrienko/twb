@@ -103,12 +103,14 @@ Noop is noop. A function that does nothing. I often need it.
 
 ### randomId
 
-Returns a string ID. Basically it is a Math.random().toString(16).slice(2) with
-an option to set (any) length of that id. Also there is a `nextId` function that
-when called returns an incremental id (hexadecimal from 0) and a `fakeUuid`
+Returns a string ID. Basically it is a `Math.random().toString(16).slice(2)`
+with an option to set (any) length of that id. Also there is a `nextId` function
+that when called returns an incremental id (hexadecimal from 0) and a `fakeUuid`
 method that returns a string in format `00000000-0000-0000-0000-000000000000'
 (it is NOT a real, RFC4122-compliant UUID, but just a random string that LOOKS
 like UUID)
+
+Second argument of `randomId` is radix - by default it is 16 for hexadecimals.
 
 ### useState
 
@@ -215,12 +217,17 @@ export const Child = () => {
 };
 ```
 
+### stopPropagation, preventDefault and stopPrevent
+
+Functions that call `preventDefault`, `stopPropagation` and both of these respectively
+on passed `React.SyntheticEvent`
+
 ## Building
 
 `npm run build`
 
 Uses `microbundle` to build. Haven't found an option to disable emitting
-declarations so I broke these - it will spit several errors about
-`declarationDir` - disregard these :)
+declarations (cuz I write it manually) but found a way to broke it - so build
+will spit several errors about `declarationDir` - disregard these :)
 
-Uses `jest` and `ts-jest` to test.
+Uses `jest` and `ts-jest` to test, but there's not much to test.

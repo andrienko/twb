@@ -1,4 +1,4 @@
-import { createElement } from 'react';
+import React, { createElement } from 'react';
 
 type Arg = string | Record<string, any> | number | Arg[];
 export const classNames: (...args: Arg[]) => string;
@@ -36,8 +36,10 @@ export const noop: () => void;
 /**
  * Generates a random hexadecimal string of given length.
  * @param  {number} length? Length of ID to generate. 6 if not provided.
+ * @param {number} radix? Radix to generate. Between 2 and 36, 16 by default
+ * (hexadecimal numbers)
  */
-export const randomId: (length?: number) => string;
+export const randomId: (length?: number, radix?: number) => string;
 /**
  * Generates a random hexadecimal string, that looks like UUID
  * (it is not a standard-complying UUID tho)
@@ -69,6 +71,13 @@ export const useToggle: (setter: React.Dispatch<React.SetStateAction<boolean>>) 
  * @param  {React.Dispatch<React.SetStateAction<string>>} setter
  */
 export const useTextChangeHandler: (setter: React.Dispatch<React.SetStateAction<string>>) => void;
+
+/** preventDefault's the event */
+export const preventDefault: (e: React.SyntheticEvent) => void;
+/** stopPropagation's the event */
+export const stopPropagation: (e: React.SyntheticEvent) => void;
+/** preventDefault's and  stopPropagation's the event */
+export const stopPrevent: (e: React.SyntheticEvent) => void;
 
 /**
  * console.log's whenever one of provided values has changed. AKA useWhyDidYouUpdate

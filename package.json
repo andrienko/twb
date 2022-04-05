@@ -1,6 +1,6 @@
 {
   "name": "twb",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "A tiny (personal-ish) tool-belt for react apps",
   "main": "./dist/twb.js",
   "source": "./src/index.ts",
