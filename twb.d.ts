@@ -70,7 +70,7 @@ export const useToggle: (setter: React.Dispatch<React.SetStateAction<boolean>>) 
  * For provided string react state setter, returns an onChange handler for input/textarea elements
  * @param  {React.Dispatch<React.SetStateAction<string>>} setter
  */
-export const useTextChangeHandler: (setter: React.Dispatch<React.SetStateAction<string>>) => void;
+export const useTextChangeHandler: (setter: React.Dispatch<React.SetStateAction<string>>) => (e: React.ChangeEvent) => void;
 
 /** preventDefault's the event */
 export const preventDefault: (e: React.SyntheticEvent) => void;
