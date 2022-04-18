@@ -64,7 +64,7 @@ export const useState: <SV>(defaultValue: SV | (() => SV)) => State<SV>;
  * For provided boolean react state setter, returns a function that will toggle the state value
  * @param  {React.Dispatch<React.SetStateAction<boolean>>} setter
  */
-export const useToggle: (setter: React.Dispatch<React.SetStateAction<boolean>>) => void;
+export const useToggle: (setter: React.Dispatch<React.SetStateAction<boolean>>) => () => void;
 
 /**
  * For provided string react state setter, returns an onChange handler for input/textarea elements
