@@ -11,13 +11,15 @@ these too, they won't change much, and if they will - the major version will
 change. There is no specific goal or anything, not trying to be an
 "all-in-one-everything" type of thing.
 
+This is intended to be used with react>=18
+
 ## Features
 
 - It has React and React-dom as peer dependencies. what will your bundler do
-with it, and honestly I don't care
+  with it, and honestly I don't care
 - I target only modern browsers. Probably it would work in IE11 even, but I did
-not test. Polyfills should work fine, too. I don't use too modern methods, so
-probably it'd be fine.
+  not test. Polyfills should work fine, too. I don't use too modern methods, so
+  probably it'd be fine.
 - There are unit tests only for stuff it makes sense for. Hooks are not tested.
 
 ## Methods
@@ -80,7 +82,7 @@ _Nowadays, the common approach to JS is to simply add scripts right before
 `body` tag. I believe a good script should work no matter where, when and how it
 was added._
 
-### mountReact
+### mountReact and mountRoot
 
 _I don't like the common approach of having a div with an id in document body
 and the finding it - I prefer to create the wrapper myself._
@@ -96,6 +98,9 @@ import { mountReact } from 'twb';
 import { App } from './App';
 mountReact(App);
 ```
+
+there is also a `mountRoot` function, that does the same, but uses the new
+`createRoot` API
 
 ### noop
 
@@ -202,8 +207,9 @@ const useHookValue = () => {
 export const [useTextContext, TextContextProvider] = createContext(useHookValue);
 ```
 
-It will derive the hook value from return of that `useHookValue` (but you can provide it manually). If you name the fn
-as a hook (`useWhatever`) react eslint rules will help you.
+It will derive the hook value from return of that `useHookValue` (but you can
+provide it manually). If you name the fn as a hook (`useWhatever`) react eslint
+rules will help you.
 
 ```typeScript
 import React from 'react';
@@ -219,8 +225,18 @@ export const Child = () => {
 
 ### stopPropagation, preventDefault and stopPrevent
 
-Functions that call `preventDefault`, `stopPropagation` and both of these respectively
-on passed `React.SyntheticEvent`
+Functions that call `preventDefault`, `stopPropagation` and both of these
+respectively on passed `React.SyntheticEvent`
+
+### types
+
+There are several type helpers also.
+
+- `FCC` is an old `React.FC` (FunctionComponent + children)
+- `ReactComponent` is anything that passes as react component (first argument
+  of `React.createElement`)
+- `StringRecord` is `Record<string, string>` - an object of strings
+- `UnknownRecord` is `Record<string, unknown>` - any object
 
 ## Building
 
